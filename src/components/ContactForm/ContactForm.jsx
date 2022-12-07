@@ -7,6 +7,7 @@ export default class ContactForm extends Component {
     name: '',
     number: '',
   };
+
   changeInput = evt => {
     const { name, value } = evt.target;
     this.setState({ [name]: value });
@@ -15,12 +16,12 @@ export default class ContactForm extends Component {
   addContact = evt => {
     evt.preventDefault();
     this.props.onSubmit({ ...this.state, id: nanoid() });
-    this.reset();
+    this.setState({
+      name: '',
+      number: '',
+    });
   };
 
-  reset = () => {
-    this.setState({ ...this.state });
-  };
   render() {
     return (
       <form onSubmit={this.addContact} className={styles.form}>
@@ -57,10 +58,6 @@ export default class ContactForm extends Component {
     );
   }
 }
-
-Component.propTypes = {
-  state: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    number: PropTypes.number.isRequired,
-  }),
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func,
 };

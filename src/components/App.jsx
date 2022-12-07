@@ -3,7 +3,7 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import styles from './form.module.css';
-import PropTypes from 'prop-types';
+
 export class App extends Component {
   state = {
     contacts: [],
@@ -48,9 +48,3 @@ export class App extends Component {
     );
   }
 }
-Component.propTypes = {
-  state: PropTypes.shape({
-    contacts: PropTypes.array,
-    filter: PropTypes.string,
-  }),
-};

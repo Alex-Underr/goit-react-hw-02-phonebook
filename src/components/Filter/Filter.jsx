@@ -1,25 +1,14 @@
-import { Component } from 'react';
 import PropTypes from 'prop-types';
-export default class Filter extends Component {
-  state = {
-    inputValue: '',
-  };
+const Filter = ({ value, onChange }) => (
+  <>
+    <p>Find contacts by name</p>
+    <input type="text" value={value} onChange={onChange} />
+  </>
+);
 
-  render() {
-    return (
-      <>
-        <p>Find contacts by name</p>
-        <input
-          type="text"
-          value={this.props.value}
-          onChange={this.props.onChange}
-        />
-      </>
-    );
-  }
-}
-Component.propTypes = {
-  state: PropTypes.shape({
-    inputValue: PropTypes.string.isRequired,
-  }),
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
+
+export default Filter;
